@@ -17,7 +17,7 @@ Identification**
 
 ## Overview
 
-UniMed-Diff is a unified conditional diffusion framework that achieves high-fidelity **4D fMRI super-resolution** while preserving the BOLD signal dynamics required for reliable functional connectivity analysis and downstream clinical tasks such as **Autism Spectrum Disorder (ASD) diagnosis**.
+STAD-Diff is a unified conditional diffusion framework that achieves high-fidelity **4D fMRI super-resolution** while preserving the BOLD signal dynamics required for reliable functional connectivity analysis and downstream clinical tasks such as **Autism Spectrum Disorder (ASD) diagnosis**.
 
 <div align="center">
 
@@ -59,7 +59,7 @@ Low-Resolution fMRI  →  [Conditional U-Net + Hybrid Attention Engine]  →  Hi
                                         Functional Connectivity Matrix  →  ASD Classification
 ```
 
-The core components of UniMed-Diff:
+The core components of STAD-Diff:
 
 - **Conditional U-Net backbone** with depthwise separable 3D convolutions (62% parameter reduction vs. standard 3D U-Net)
 - **3D CBAM** (channel + spatial attention) for functionally active region amplification
@@ -82,7 +82,7 @@ The core components of UniMed-Diff:
 | DDPM (T=1000) | 33.91 | 0.905 | 0.854 | 0.842 | 0.806 | 18.52 |
 | SR3 | 34.64 | 0.920 | 0.870 | 0.855 | 0.813 | 2.30 |
 | Fast-DDPM | 35.74 | 0.941 | 0.895 | 0.876 | 0.829 | 1.24 |
-| **UniMed-Diff (ours)** | **36.83** | **0.958** | **0.918** | **0.907** | **0.843** | **1.31** |
+| **STAD-Diff (ours)** | **36.83** | **0.958** | **0.918** | **0.907** | **0.843** | **1.31** |
 | GT upper bound | — | — | — | — | 0.871 | — |
 
 ### ASD Classification (ABIDE Test Set)
@@ -90,7 +90,7 @@ The core components of UniMed-Diff:
 | Method | ACC (%) | AUC | F1 (%) |
 |--------|---------|-----|--------|
 | Low-res direct (no SR) | 63.4 | 0.701 | 72.4 |
-| **UniMed-Diff (ours)** | **76.3** | **0.843** | **80.4** |
+| **STAD-Diff (ours)** | **76.3** | **0.843** | **80.4** |
 | GT upper bound | 78.9 | 0.871 | 83.9 |
 
 ### Cross-Site Generalization (Δ-PSNR)
@@ -99,15 +99,15 @@ The core components of UniMed-Diff:
 |--------|-----|----|-----|------|-----|----------|
 | 3D U-Net | 29.1 | 29.8 | 28.3 | 29.4 | 27.9 | 1.9 |
 | SR3 | 28.9 | 29.6 | 28.1 | 29.3 | 27.8 | 1.8 |
-| **UniMed-Diff** | **31.2** | **31.8** | **30.9** | **31.5** | **30.7** | **1.1** |
+| **STAD-Diff** | **31.2** | **31.8** | **30.9** | **31.5** | **30.7** | **1.1** |
 
 ---
 
 ## Installation
 
 ```bash
-git clone https://github.com/[your-org]/UniMed-Diff.git
-cd UniMed-Diff
+git clone https://github.com/[your-org]/STAD-Diff.git
+cd STAD-Diff
 pip install -r requirements.txt
 ```
 
@@ -193,7 +193,7 @@ Inference completes in **~1.31 seconds** per 128×256×256 volume on a single NV
 
 ## Modality Configuration
 
-UniMed-Diff supports multiple imaging tasks with the same weights via configuration flags:
+STAD-Diff supports multiple imaging tasks with the same weights via configuration flags:
 
 ```python
 # 4D fMRI super-resolution (primary use case)
@@ -236,7 +236,7 @@ This extracts a 116×116 functional connectivity matrix (AAL atlas parcellation)
 | w/o temporal attention | 0.886 | 0.809 |
 | w/o conditional init | 0.889 | 0.816 |
 | w/o non-uniform schedule | 0.894 | 0.823 |
-| **Complete UniMed-Diff** | **0.918** | **0.843** |
+| **Complete STAD-Diff** | **0.918** | **0.843** |
 
 ---
 
@@ -246,7 +246,9 @@ If you find this work useful, please cite:
 
 ```bibtex
 @article{tian2025unimediff,
-  title={UniMed-Diff: A Conditional Diffusion Framework with Spatiotemporal Hybrid Attention for fMRI Super-Resolution and Autism Spectrum Disorder Diagnosis},
+  title={STAD-Diff: STAD-Diff: A Spatiotemporal Attention Diffusion Framework with Diagnosis-Aware
+Connectivity Learning for Functional MRI Restoration and Autism Spectrum Disorder
+Identification},
   author={Tian, Liang and Gu, Tianhe and Wang, Yingxi and Wei, Xiaotong and Lv, Dongfang and Liu, Xingyu and Li, Dazhou},
   journal={Preprint submitted to Elsevier},
   year={2025}
