@@ -1,6 +1,8 @@
-# UniMed-Diff
+# STAD-Diff
 
-**A Conditional Diffusion Framework with Spatiotemporal Hybrid Attention for fMRI Super-Resolution and Autism Spectrum Disorder Diagnosis**
+**STAD-Diff: A Spatiotemporal Attention Diffusion Framework with Diagnosis-Aware
+Connectivity Learning for Functional MRI Restoration and Autism Spectrum Disorder
+Identification**
 
 <div align="center">
 
